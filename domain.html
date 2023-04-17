@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                container: {
+                    center: true,
+                    padding: {
+                        DEFAULT: '13px',
+                        sm: '15px',
+                        lg: '20px',
+                        xl: '25px',
+                    }
+                },
+                extend: {
+                    fontFamily: {
+                        'bebas': ['Bebas Neue', 'cursive'],
+                    },
+                    colors: {
+                        clifford: "#da373d",
+                        blue: "#0B57DB",
+                        yellow: "#FFAC2F",
+                        lightBlue: "#F0F6FF",
+                        skyBlue: "#E7EDFF",
+                        lightSkyBlue: "#DEEAFF",
+                        lightgray: "#FBFCFF",
+                        orange: "#FF6D00",
+                        grayBg: "#7F8FA4",
+                        dark: '#0D1F39;',
+                        darkBlue: '#0E2446;',
+                    },
+                    maxWidth: {
+                        'full': '100%',
+                    },
+                    backgroundColor: {
+                        'dark': '#0D1F39;',
+                        'light': '#F8F8F8;',
+                    }
+                },
+            },
+        };
+
+    </script>
+
+    <style type="text/tailwindcss">
+
+        body{
+                font-family: 'Inter', sans-serif;
+            }  
+            
+    </style>
+
+    <title>Firecompass - Alert Details</title>
+
+</head>
+
+
+<body class="bg-light min-h-screen pb-6" x-data>
+
+    <!--======== Header Area Start =========-->
+    <header class="header bg-dark sm:py-3.5 py-3 fixed top-0 left-0 w-full z-40">
+        <div class="container max-w-full flex items-center justify-between">
+            <div class="dropdown group relative hover:bg-darkBlue  hover:rounded-b-none">
+                <div
+                    class="flex items-center space-x-2  bg-[#00000033] hover:bg-[#000000b3] group-hover:bg-darkBlue transition  border-[1px] border-[#ffffff33] sm:py-[7px] sm:px-[9px] py-1.5 px-2  rounded group-hover:rounded-b-none group-hover:border-b-0 ">
+                    <img src="assets/img/logos/logo.svg"
+                        class="shrink-0 sm:w-6 sm:h-6 w-5 h-5 rounded-full object-cover" alt="">
+                    <div class="sm:flex hidden items-center justify-between">
+                        <div class="flex flex-col space-y-[2px] w-[120px]  lg:w-[160px] xl:w-[228px]">
+                            <h6 class="text-sm font-bold text-white leading-none">FIRECOMPASS</h6>
+                            <span class="text-xs text-white opacity-[.5] block leading-none ">Southern India</span>
+                        </div>
+                        <div
+                            class="arrow-down shrink-0 ml-2 cursor-pointer group-hover:opacity-50 group-hover:rotate-180">
+                            <img src="assets/img/icons/arrow-down.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <ul
+                    class="dropdown-menu group-hover:block absolute hidden z-10 border-[1px] border-[#ffffff33] border-t-0 w-full left-0 rounded-b overflow-hidden">
+                    <div
+                        class="flex items-center space-x-2 bg-darkBlue hover:bg-dark transition sm:py-[8px] sm:px-[9px] py-1.5 px-2 ">
+                        <img src="assets/img/logos/motorola-logo.svg"
+                            class="shrink-0 sm:w-6 sm:h-6 w-5 h-5 rounded-full object-cover" alt="">
+                        <div class="sm:flex hidden items-center justify-between">
+                            <div class="flex flex-col space-y-[2px] w-[120px]  lg:w-[160px] xl:w-[228px]">
+                                <h6 class="text-sm font-bold text-white leading-none uppercase">Motorola, Inc.</h6>
+                                <span class="text-xs text-white opacity-[.5] block leading-none ">Illinois, United
+                                    States</span>
+                            </div>
+                            <div class="arrow-down shrink-0 ml-2 cursor-pointer -rotate-90">
+                                <img src="assets/img/icons/arrow-down.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-center space-x-2 bg-darkBlue hover:bg-dark transition sm:py-[8px] sm:px-[9px] py-1.5 px-2 ">
+                        <img src="assets/img/logos/motorola-logo.svg"
+                            class="shrink-0 sm:w-6 sm:h-6 w-5 h-5 rounded-full object-cover" alt="">
+                        <div class="sm:flex hidden items-center justify-between">
+                            <div class="flex flex-col space-y-[2px] w-[120px]  lg:w-[160px] xl:w-[228px]">
+                                <h6 class="text-sm font-bold text-white leading-none uppercase">Alpine Services Co.</h6>
+                                <span class="text-xs text-white opacity-[.5] block leading-none ">Gaithersburg,
+                                    India</span>
+                            </div>
+                            <div class="arrow-down shrink-0 ml-2 cursor-pointer -rotate-90">
+                                <img src="assets/img/icons/arrow-down.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-center space-x-2 bg-darkBlue hover:bg-dark transition sm:py-[8px] sm:px-[9px] py-1.5 px-2 ">
+                        <img src="assets/img/logos/buckman-logo.svg"
+                            class="shrink-0 sm:w-6 sm:h-6 w-5 h-5 rounded-full object-cover" alt="">
+                        <div class="sm:flex hidden items-center justify-between">
+                            <div class="flex flex-col space-y-[2px] w-[120px]  lg:w-[160px] xl:w-[228px]">
+                                <h6 class="text-sm font-bold text-white leading-none uppercase">Buckman and Co.</h6>
+                                <span class="text-xs text-white opacity-[.5] block leading-none ">Sabillasville,
+                                    India</span>
+                            </div>
+                            <div class="arrow-down shrink-0 ml-2 cursor-pointer -rotate-90">
+                                <img src="assets/img/icons/arrow-down.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            <div class="header-right flex items-center space-x-3 sm:space-x-4 lg:space-x-5 xl:space-x-9">
+                <div class="flex items-center space-x-3">
+                    <form action="#" class="search-box relative" x-data="{open : false}" x-on:click.away="open = false">
+                        <button
+                            class="bg-[#00000033] hover:bg-[#000000b3] border-[1px] border-[#ffffff33] rounded transition  flex items-center justify-center cursor-pointer w-[34px] h-[34px] relative z-20"
+                            @click="open = ! open" :class="{'sm:rounded-l-none' : open === true}"><img
+                                src="assets/img/icons/search.svg" alt=""></button>
+                        <input x-show="open" type="text" placeholder="Search"
+                            class="rounded transition w-52 lg:w-60 bg-[#0a192e] sm:bg-[#00000033]  outline-none text-xs py-2 px-3 text-white  h-[34px] absolute -right-24 shadow-md shadow-[#ffffff33] sm:shadow-none sm:right-0 sm:top-0 top-10 z-10 border-[1px] border-[#ffffff33]">
+                    </form>
+
+                    <div
+                        class="header-data h-[34px] flex items-center justify-between px-3 lg:px-4 py-1 space-x-3  bg-[#00000033] hover:bg-[#000000b3] border-[1px] border-[#ffffff33] rounded transition  lg:w-[290px]">
+                        <div class="flex items-center text-[12px] text-white space-x-1 lg:space-x-2"><span><img
+                                    src="assets/img/icons/spark.svg" alt=""></span>
+                            <div class="hidden lg:block">31 new vulnerabilities found</div>
+                        </div> <i class="text-xs hidden lg:block text-white opacity-[.5]">3 mins ago</i>
+                    </div>
+                </div>
+                <div class="header-buttons flex items-center space-x-[6px] sm:space-x-2">
+                    <button
+                        class=" bg-[#00000033] rounded-lg transition  hover:bg-[#00000080]  flex items-center justify-center cursor-pointer w-[34px] h-[34px]"><img
+                            src="assets/img/icons/question-circle.svg" alt=""></button>
+                    <div class="relative" x-data="{ open: false }"> <button
+                            class=" bg-[#00000033] rounded-lg transition  hover:bg-[#00000080]  flex items-center justify-center cursor-pointer w-[34px] h-[34px]"
+                            x-on:click="open =! open"><img src="assets/img/icons/notification.svg" alt=""></button>
+                        <div x-show="open" x-on:click.away="open = false">
+
+                            <div
+                                class="absolute -right-2 z-10 mt-2 w-64 md:w-64 lg:w-72 xl:w-80 origin-top-right   list-none bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none rounded-lg">
+                                <div class="sort-icon absolute -top-3 right-5">
+                                    <img src="assets/img/icons/sort-white-left-2.svg" class="rotate-90" alt="">
+                                </div>
+                                <div class="py-1">
+                                    <li class=" px-4 py-2 flex items-center justify-between">
+                                        <h6 class="text-xs font-semibold text-dark">Notifications</h6>
+                                        <button
+                                            class="bg-transparent border-0 p-0 cursor-pointer transition opacity-40 hover:opacity-100"
+                                            @click="open = false"><img src="assets/img/icons/close-icon.svg"
+                                                alt=""></button>
+                                    </li>
+                                    <li class=" px-4 py-2.5 border-t flex items-start justify-start">
+                                        <span class="flex-shrink-0 w-4 mr-1.5"><img src="assets/img/icons/bell-dot.svg"
+                                                alt=""></span>
+                                        <div>
+                                            <a href=""
+                                                class="block font-medium text-xs text-[#525256] transition hover:text-blue ">You
+                                                have new vulnerabilities report</a>
+                                            <div class="flex items-center gap-2 pt-2">
+                                                <button
+                                                    class="bg-blue rounded-3xl text-[10px] font-semibold min-w-[70px] transition text-white py-2 px-3 hover:bg-dark leading-none lg:px-4">Preview
+                                                    Now</button>
+                                                <button
+                                                    class="bg-[#F0F6FF] rounded-3xl text-[10px] font-semibold transition text-black py-2 px-3 hover:bg-blue hover:text-white leading-none lg:px-4">Not
+                                                    Interested</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class=" px-4 py-2.5 border-t flex items-start justify-start">
+                                        <span class="flex-shrink-0 w-4 mr-1.5"><img src="assets/img/icons/bell-dot.svg"
+                                                alt=""></span>
+                                        <div>
+                                            <a href=""
+                                                class="block font-medium text-xs text-[#525256] transition hover:text-blue ">You
+                                                have new vulnerabilities report</a>
+                                            <div class="flex items-center gap-2 pt-2">
+                                                <button
+                                                    class="bg-blue rounded-3xl text-[10px] font-semibold transition text-white py-2 px-4 hover:bg-dark leading-none">Allow</button>
+                                                <button
+                                                    class="bg-[#F0F6FF] rounded-3xl text-[10px] font-semibold transition text-black py-2 px-4 hover:bg-blue hover:text-white leading-none">Reject</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class=" px-4 py-2.5 border-t flex items-start justify-start">
+                                        <span class="flex-shrink-0 w-4 mr-1.5"><img src="assets/img/icons/bell-dot.svg"
+                                                alt=""></span>
+                                        <div>
+                                            <a href=""
+                                                class="block font-medium text-xs text-[#525256] transition hover:text-blue ">You
+                                                have new vulnerabilities report</a>
+                                            <p class="text-xs text-[#848486] pt-1 font-medium"><i>The servers will be
+                                                    unavailable from 1am 23rd July 2022 to 4pm 26th July 2022.</i></p>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative" x-data="{ open: false }"> <button
+                            class=" bg-[#00000033] rounded-lg transition  hover:bg-[#00000080]  flex items-center justify-center cursor-pointer w-[34px] h-[34px]"
+                            x-on:click="open =! open"><img src="assets/img/icons/dots.svg" alt=""></button>
+                        <div x-show="open" x-on:click.away="open = false">
+                            <div
+                                class="absolute -right-2 z-10 mt-2 w-48 md:w-54 origin-top-right list-none bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none rounded-lg">
+                                <div class="sort-icon absolute -top-3 right-5">
+                                    <img src="assets/img/icons/sort-white-left-2.svg" class="rotate-90" alt="">
+                                </div>
+                                <div class="py-1">
+                                    <li class=" px-4 py-2 ">
+                                        <a href="#"
+                                            class="text-dark font-medium transition leading-none text-xs group flex items-center hover:text-blue">
+                                            <span class="flex-shrink-0 min-w-[20px] mr-1.5"><img
+                                                    src="assets/img/icons/di-1.svg" alt=""></span>
+                                            Help
+                                        </a>
+                                    </li>
+                                    <li class=" px-4 py-2 border-t">
+                                        <a href="#"
+                                            class="text-dark font-medium transition leading-none text-xs group flex items-center hover:text-blue">
+                                            <span class="flex-shrink-0 min-w-[20px] mr-1.5"><img
+                                                    src="assets/img/icons/di-2.svg" alt=""></span>
+                                            Settings
+                                        </a>
+                                    </li>
+                                    <li class=" px-4 py-2 border-t flex items-center justify-between">
+                                        <a href="#"
+                                            class="text-dark font-medium transition leading-none text-xs group flex items-center hover:text-blue">
+                                            <span class="flex-shrink-0 min-w-[20px] mr-1.5"><img
+                                                    src="assets/img/icons/di-3.svg" alt=""></span>
+                                            Light Mode
+                                        </a>
+                                        <label class="relative inline-flex items-center cursor-pointer ms-1">
+                                            <input type="checkbox" value="" class="sr-only peer">
+                                            <div
+                                                class="w-6 h-3.5 bg-gray-200 peer-focus:outline-none   rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-2.5 after:w-2.5 after:transition-all dark:border-gray peer-checked:bg-blue">
+                                            </div>
+                                        </label>
+                                    </li>
+                                    <li class=" px-4 py-2 border-t">
+                                        <a href="#"
+                                            class="text-dark font-medium transition leading-none text-xs group flex items-center hover:text-blue">
+                                            <span class="flex-shrink-0 min-w-[20px] mr-1.5"><img
+                                                    src="assets/img/icons/di-4.svg" alt=""></span>
+                                            Log Out
+                                        </a>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sidebarOpen" @click="$refs.sidebar.classList.add('show')"
+                    class="sidebar-open block lg:hidden text-white text-lg transition  hover:opacity-[.6] cursor-pointer">
+                    <i class="fas fa-align-right"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--======== Header Area End =========-->
+
+
+    <!--======== Main Area Start =========-->
+    <main class="main pt-[80px] md:pt-[92px]">
+
+        <div class="container max-w-full flex gap-5">
+
+
+            <!--======== Sidebar Area Start =========-->
+            <aside id="sidebar" x-ref="sidebar"
+                class="sidebar bg-white top-0 overflow-y-auto lg:overflow-visible  left-[-100%] lg:z-10 z-50 lg:top-[92px] h-full min-h-[92vh] fixed lg:sticky flex flex-col justify-between shadow-[#0d1f390f] pl-[12px] xl:pl-[13px] lg:pt-[13px] pt-2 p-[13px] lg:p-[10px] xl:p-[13px] rounded-none lg:rounded-md xl:w-[280px] lg:w-[80px] sm:w-[280px] w-[260px] transition-all  shrink-0">
+                <div>
+                    <div class="text-right">
+                        <div id="sidebarClose" @click="$refs.sidebar.classList.remove('show')"
+                            class="sidebar-close block lg:hidden text-dark text-[24px] cursor-pointer transition hover:text-blue ">
+                            <i class="fas fa-times-square "></i>
+                        </div>
+                    </div>
+                    <div id="sidebarToggler" @click="$refs.sidebar.classList.toggle('show')"
+                        class="bg-blue w-6 h-6 rounded-full lg:flex  items-center justify-center cursor-pointer transition hover:bg-dark p-[5px] shadow-md shadow-indigo-500/50 absolute -right-3 top-3 hidden xl:hidden">
+                        <img class="-rotate-90 max-w-full" src="assets/img/icons/arrow-down.svg" alt="">
+                    </div>
+                    <nav class="sidebar-nav pt-1 lg:pt-2 xl:pt-2 px-1 lg:px-0 xl:px-1 ">
+                        <ul class=" border-b border-gray-200 pb-3 mb-7">
+                            <li class="relative mb-3"><a href="index.html"
+                                    class="flex items-center xl:text-base text-sm font-semibold text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]">
+                                    <span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"><img
+                                            src="assets/img/icons/nav-icon-1.svg" alt=""></span>
+                                    Dashboard</a></li>
+                            <li class="relative mb-3" x-data="{ open: false }"><a href="" @click.prevent="open =! open"
+                                    class="flex items-center  xl:text-base lg:text-[0px] text-sm  font-medium text-dark opacity-[.4] relative pl-[14px] xl:pl-[14px] xl:pr-4 lg:pr-0 lg:pl-1.5 transition hover:opacity-[1]"
+                                    :class="{'opacity-100' : open === true}"><span
+                                        class="w-9 xl:w-9 lg:w-12 lg:h-12 h-auto xl:h-auto shrink-0 mr-3 xl:mr-3 lg:mr-5 flex items-center justify-center rounded bg-white xl:bg-white"
+                                        :class="{'lg:bg-[#F0F6FF]':open === true}"><img
+                                            src="assets/img/icons/nav-icon-2.svg" alt=""></span>
+                                    Assets</a>
+                                <span
+                                    class="nav-link-badge top-[10px] leading-none py-1 px-2 text-center min-w-[35px] absolute right-0 text-white rounded-full text-xs bg-blue block lg:hidden xl:block">13</span>
+                                <ul class="m-0 p-0 xl:p-0 list-none pl-6 xl:pl-6 xl:relative xl:left-0 xl:top-0 xl:shadow-none lg:absolute lg:left-20 lg:w-40 lg:shadow lg:-top-2 bg-white lg:p-3 lg:pt-2 lg:pb-4 rounded"
+                                    x-show="open" @click.away="open = false">
+                                    <div class="sort-left absolute -left-2 top-5"><img
+                                            src="assets/img/icons/sort-white-left.svg" alt=""></div>
+                                    <li class="py-1.5 px-2 pt-3"><a href=""
+                                            class="text-dark no-underline transition flex items-center text-sm font-medium opacity-40 hover:opacity-100"><span
+                                                class="flex-shrink-0 mr-2 relative top-[1px]"><img
+                                                    src="assets/img/icons/sort-right.svg" alt=""></span>
+                                            Domains</a></li>
+                                    <li class="py-1.5 px-2 "><a href=""
+                                            class="text-dark no-underline transition flex items-center text-sm font-medium opacity-40 hover:opacity-100"><span
+                                                class="flex-shrink-0 mr-2 relative top-[1px]"><img
+                                                    src="assets/img/icons/sort-right.svg" alt=""></span>
+                                            Subdomains</a></li>
+                                    <li class="py-1.5 px-2 "><a href=""
+                                            class="text-dark no-underline transition flex items-center text-sm font-medium opacity-40 hover:opacity-100"><span
+                                                class="flex-shrink-0 mr-2 relative top-[1px]"><img
+                                                    src="assets/img/icons/sort-right.svg" alt=""></span>
+                                            IPs</a></li>
+                                    <li class="py-1.5 px-2 "><a href=""
+                                            class="text-dark no-underline transition flex items-center text-sm font-medium opacity-40 hover:opacity-100"><span
+                                                class="flex-shrink-0 mr-2 relative top-[1px]"><img
+                                                    src="assets/img/icons/sort-right.svg" alt=""></span>
+                                            Services</a></li>
+                                    <li class="py-1.5 px-2 "><a href=""
+                                            class="text-dark no-underline transition flex items-center text-sm font-medium opacity-40 hover:opacity-100"><span
+                                                class="flex-shrink-0 mr-2 relative top-[1px]"><img
+                                                    src="assets/img/icons/sort-right.svg" alt=""></span>
+                                            Mobile apps</a></li>
+                                </ul>
+                            </li>
+                            <li class="relative mb-3"><a href=""
+                                    class="flex items-center xl:text-base text-sm  font-medium text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"><span
+                                        class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"><img
+                                            src="assets/img/icons/nav-icon-3.svg" alt=""></span>
+                                    Exposures </a>
+                            </li>
+                            <li class="relative mb-3"><a href=""
+                                    class="flex items-center font-medium text-dark  xl:text-base text-sm  opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"><span
+                                        class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"><img
+                                            src="assets/img/icons/nav-icon-4.svg" alt=""></span>
+                                    Reports </a>
+                            </li>
+                        </ul>
+                        <ul class=" border-b border-gray-200 pb-3 mb-2">
+                            <li class="relative mb-3"><a href=""
+                                    class="flex items-center font-medium  xl:text-base text-sm  text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]">
+                                    <span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"><img
+                                            src="assets/img/icons/nav-icon-5.svg" alt=""></span>
+                                    Playbook</a></li>
+                            <li class="relative mb-3"><a href=""
+                                    class="flex items-center font-medium  xl:text-base text-sm  text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"><span
+                                        class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"><img
+                                            src="assets/img/icons/nav-icon-6.svg" alt=""></span>
+                                    Campaigns </a> <span
+                                    class="nav-link-badge top-[23%] leading-none py-1 px-2 text-center min-w-[35px] absolute right-0 text-white rounded-full text-xs bg-yellow block lg:hidden xl:block">New</span>
+                            </li>
+                        </ul>
+                        <ul class=" pb-3 mb-2">
+                            <li class="relative mb-3"><a href=""
+                                    class="flex items-center font-medium  xl:text-base text-sm  text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]">
+                                    <span class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"><img
+                                            src="assets/img/icons/nav-icon-7.svg" alt=""></span>
+                                    Settings</a></li>
+                            <li class="relative mb-3"><a href=""
+                                    class="flex items-center font-medium  xl:text-base text-sm  text-dark opacity-[.4] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"><span
+                                        class="w-9 shrink-0 mr-3   xl:mr-3 lg:mr-5"><img
+                                            src="assets/img/icons/nav-icon-8.svg" alt=""></span>
+                                    Activity log </a>
+                            </li>
+                            <li class="relative mb-3"><a href="alerts-setup.html"
+                                    class="flex items-center font-medium  xl:text-base text-sm  text-dark opacity-[1] relative pr-4 pl-[14px] transition hover:opacity-[1] lg:text-[0px]"><span
+                                        class="w-9 shrink-0 mr-3 xl:mr-3 lg:mr-5"><img
+                                            src="assets/img/icons/nav-icon-9.svg" alt=""></span>
+                                    Alert Center </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="sidebar-help bg-[#EEF4FF] text-center p-4 rounded-lg mt-8">
+                    <div
+                        class="sidebar-help-icon mb-6 w-16 h-16 bg-white mx-auto -mt-12 rounded-full flex items-center justify-center">
+                        <img src="assets/img/icons/question-mark.svg" alt="">
+                    </div>
+                    <h5 class="font-semibold text-dark mb-3 text-lg">Help center</h5>
+                    <p class="text-sm max-w-[206px] mx-auto mb-8 opacity-[.4]">Etiam porta sem malesuada magna mollis
+                        euismod. </p>
+                    <a href=""
+                        class=" flex items-center py-3 px-3 leading-1 rounded-full bg-blue text-white transition text-sm font-medium hover:bg-dark hover:text-white justify-center">Go
+                        to help center</a>
+                </div>
+            </aside>
+            <!--======== Sidebar Area End =========-->
+
+
+
+            <!--======== Dahsboard Area Start =========-->
+            <section class="dashboard-area w-full">
+
+                <div
+                    class="page-title md:flex-row space-y-3 flex-col md:space-y-0 flex items-start sm:items-center justify-between sm:pb-6 pb-4">
+                    <ul class="flex items-center space-x-2 flex-wrap sm:pt-4 md:pt-0">
+                        <li><a href=""><b class="text-dark lg:text-lg sm:text-base text-sm leading-normal">Settings</b>
+                                <i class="fas ml-1 text-[#8A8A8A]  sm:text-base text-sm  fa-angle-right"></i></a></li>
+                        <li><a href="alerts-setup.html"
+                                class="text-[#3D3D3D] font-medium  sm:text-base text-sm  leading-normal">Alert
+                                setup
+                                <i class="fas ml-1 text-[#8A8A8A]  sm:text-base text-sm  fa-angle-right"></i></a>
+                        </li>
+                        <li><a href="alerts-alert-details.html"
+                                class="text-[#8A8A8A] font-medium  sm:text-base text-sm  leading-normal">Alert detail
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="text-center flex items-center w-full sm:w-auto gap-2 flex-wrap">
+                        <a href=""
+                            class="inline-flex px-3 py-[8px] leading-none border border-[#D4D6E4] transition hover:bg-[#D4D6E4] rounded-sm text-sm text-[#525256] items-center"><span><img
+                                    class="mr-1" src="assets/img/icons/support.svg" alt=""></span> Raise a ticket</a>
+                        <a href=""
+                            class="inline-flex px-3 py-[8px] leading-none border border-[#D4D6E4] transition hover:bg-[#D4D6E4] rounded-sm text-sm text-[#525256] items-center"><span><img
+                                    class="mr-1" src="assets/img/icons/Correct.svg" alt=""></span> Mark verified</a>
+                        <a href=""
+                            class="inline-flex px-3 py-[8px] leading-none border border-[#D4D6E4] transition hover:bg-[#D4D6E4] rounded-sm text-sm text-[#525256] items-center"><span><img
+                                    class="mr-1" src="assets/img/icons/archive.svg" alt=""></span> Mute</a>
+                        <a href=""
+                            class="inline-flex px-3 py-[8px] leading-none border border-[#D4D6E4] transition hover:bg-[#D4D6E4] rounded-sm text-sm text-[#525256] items-center"><span><img
+                                    class="mr-1" src="assets/img/icons/trash-red.svg" alt=""></span> Close</a>
+                    </div>
+                </div>
+
+                <div class="flex bg-white rounded-lg shadow-[0px 6px 12px rgba(0, 0, 0, 0.0357507)] p-4 lg:p-6 md:p-5 md:flex-row flex-col">
+                    <div class="alert-setup-detail-left">
+                        <h5 class="text-lg font-medium mb-3 leading-tight text-darkBlue">ssl_expired for service :
+                            tcp/443 at IP:
+                            1.1.1.1</h5>
+                        <div class="bg-[#FBF2E6] px-4 lg:px-6 py-4 lg:py-5 rounded-md mb-5">
+                            <div class="text-sm pb-2 text-darkBlue opacity-60">You are seeing this alert because the IP
+                                1.1.1.1 is a false
+                                positive.</div>
+                            <div class="flex items-center gap-2 pt-2 flex-wrap">
+                                <button
+                                    class="bg-blue rounded-3xl text-[10px] font-semibold min-w-[70px] transition text-white py-2 px-3 hover:bg-dark leading-none lg:px-4">
+                                    Ignore</button>
+                                <button
+                                    class="bg-[#9797971a] rounded-3xl text-[10px] font-medium transition text-black py-2 px-3 hover:bg-blue hover:text-white leading-none lg:px-4">
+                                    Close alert</button>
+                                <button
+                                    class="bg-[#9797971a] rounded-3xl text-[10px] font-medium transition text-black py-2 px-3 hover:bg-blue hover:text-white leading-none lg:px-4">Close
+                                    all alerts for this IP</button>
+                            </div>
+                        </div>
+                        <div class="label text-sm font-semibold leading-tight mb-3 text-darkBlue">Category</div>
+                        <div class="code-box bg-[#F8FBFF] rounded-md p-5 lg:p-6 mb-5">
+                            <p class="m-0 text-sm opacity-60 text-darkBlue break-all ">
+                                anyindustrial_control_systeminternet_scanneriotmalwarenew_serviceopen_databasessl_expireduncommonuncommon_plusvulnerablevulnerable_unverified
+                            </p>
+                        </div>
+                        <div class="label text-sm font-semibold leading-tight mb-3 text-darkBlue">Vulnerabilities</div>
+                        <div class="code-box bg-[#F8FBFF] rounded-md p-5 lg:p-6 mb-5">
+                            <p class="m-0 text-sm opacity-60 text-darkBlue"> [ { cve:"CVE-2018-1303" "description": "A
+                                specially
+                                crafted HTTP request header could have crashed the Apache HTTP Server prior to version
+                                2.4.30 due to an out of bound read while preparing data to be cached in shared memory.
+                                It could be used as a Denial of Service attack against users of mod_cache_socache. The
+                                vulnerability is considered as low risk since mod_cache_socache is not widely used,
+                                mod_cache_disk is not concerned by this vulnerability.", "cvss": 5 }]</p>
+                        </div>
+                        <div class="label text-sm font-semibold leading-tight mb-3 text-darkBlue">Location</div>
+                        <div class="code-box bg-[#F8FBFF] rounded-md p-5 lg:p-6 mb-5">
+                            <p class="m-0 text-sm opacity-60 text-darkBlue">{ "area_code": null, "city": "St. Louis",
+                                "country_code": "US", "country_name": "United States", "latitude": 38.62727,
+                                "longitude": -90.19789, "region_code": "MO" }
+                            </p>
+                        </div>
+                        <div class="label text-sm font-semibold leading-tight mb-3 text-darkBlue">CPE</div>
+                        <div class="code-box bg-[#F8FBFF] rounded-md p-5 lg:p-6 mb-5">
+                            <p class="m-0 text-sm opacity-60 text-darkBlue">['"cpe:/a:php:php"']
+                            </p>
+                        </div>
+                        <div class="banner-btn mb-4">
+                            <a href=""
+                                class="border border-[#AEB3CD] rounded-[4px] inline-block transition text-blue leading-tight py-2 px-4 min-w-[140px] text-sm hover:bg-blue hover:border-blue hover:text-white text-center">Banner</a>
+                        </div>
+                        <div class="label text-sm font-semibold leading-tight mb-3 text-darkBlue">Previous instances
+                        </div>
+                        <div class="mt-8 flow-root">
+                            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                                    <div class="overflow-hidden   ring-2 ring-[#CCE0FF] ring-opacity-80 sm:rounded-lg">
+                                        <table class="min-w-full divide-y divide-[#CCE0FF]">
+                                            <thead class="bg-[#F0F6FF]">
+                                                <tr>
+                                                    <th scope="col"
+                                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-medium text-[#0e1d4461] sm:pl-6">
+                                                        <div class="flex items-center">
+                                                            <input name="comments" type="checkbox"
+                                                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 me-1">
+                                                            Title
+                                                        </div>
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="px-3 py-3.5 text-left text-sm font-medium text-[#0e1d4461]">
+                                                        Created At</th>
+                                                    <th scope="col"
+                                                        class="px-3 py-3.5 text-left text-sm font-medium text-[#0e1d4461]">
+                                                        State</th>
+                                                    <th scope="col"
+                                                        class="px-3 py-3.5 text-left text-sm font-medium text-[#0e1d4461]">
+                                                        Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-[#CCE0FF] bg-white">
+                                                <tr>
+                                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"
+                                                        colspan="4">
+                                                        <div class="table-empty text-center py-2">
+                                                            <div class="table-empty-icon flex justify-center">
+                                                                <img src="assets/img/icons/empty folder.png" alt="">
+                                                            </div>
+                                                            <div class="text-sm font-semibold mt-1">No other instances
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- More people... -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert-setup-detail-right xl:pl-8 2xl:pl-14 lg:pl-6 md:pl-5 mt-6 md:mt-0">
+                        <div class="bg-[#F0F6FF] px-2.5 min-w-full md:w-[250px] lg:w-[300px] rounded-md">
+                            <div class="py-5 border-b border-b-[#CCE0FF] px-2.5">
+                                <div class="label text-sm lg:text-base font-semibold leading-none mb-3 text-darkBlue">
+                                    Severity</div>
+                                <div
+                                    class="text-semibold text-white inline-block text-sm bg-[#F36A6A] py-1.5 leading-none px-3 rounded-md">
+                                    Critical</div>
+                            </div>
+                            <div class="py-5 border-b border-b-[#CCE0FF] px-2.5">
+                                <div class="label text-sm lg:text-base font-semibold leading-none mb-3 text-darkBlue">
+                                    Type of alert</div>
+                                <div
+                                    class="text-semibold text-blue inline-block text-sm bg-[#E7EDFF] py-1 leading-tight px-2 rounded">
+                                    Service</div>
+                            </div>
+                            <div class="py-5 border-b border-b-[#CCE0FF] px-2.5">
+                                <div class="label text-sm lg:text-base font-semibold leading-none mb-3 text-darkBlue">
+                                    Targets</div>
+                                <div>
+                                    <div class="text-xs">IP: 1.1.1.1 <span
+                                            class="inline-block rounded-full text-white text-xs px-1 py-0.5 bg-[#F36A6A]">F+</span>
+                                    </div>
+                                    <div class="text-xs">Service: tcp/443</div>
+                                </div>
+                            </div>
+                            <div class="py-5 border-b border-b-[#CCE0FF] px-2.5 pr-5 pb-7">
+                                <div class="label text-sm lg:text-base font-semibold leading-none mb-1 text-darkBlue">
+                                    IP details</div>
+
+                                <div
+                                    class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                    <div class="font-medium">Other open ports</div>
+                                    <div>tcp/80 <span class="inline-block text-blue ">+3</span> </div>
+                                </div>
+                                <div
+                                    class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                    <div class="font-medium">Attributions</div>
+                                    <div>Netblock <span class="inline-block text-blue ">+3</span> </div>
+                                </div>
+                                <div
+                                    class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                    <div class="font-medium">ISP name</div>
+                                    <div>VTCDIGOM-AS-V...</div>
+                                </div>
+                            </div>
+                            <div class="py-5  px-2.5">
+                                <div class="label text-sm lg:text-base font-semibold leading-none mb-3 text-darkBlue">
+                                    Notification mode</div>
+                                <div class="flex items-center gap-2">
+                                    <button class="bg-transparent border-0 p-0"><img src="assets/img/icons/noi-1.svg"
+                                            alt=""></button>
+                                    <button class="bg-transparent border-0 p-0"><img src="assets/img/icons/noi-2.svg"
+                                            alt=""></button>
+                                    <button class="bg-transparent border-0 p-0"><img src="assets/img/icons/noi-3.svg"
+                                            alt=""></button>
+                                    <button class="bg-transparent border-0 p-0"><img src="assets/img/icons/noi-4.svg"
+                                            alt=""></button>
+                                </div>
+                                <div
+                                    class="bg-white rounded-lg px-3 pt-3 shadow-[0px 6px 12px rgba(0, 0, 0, 0.0357507)] mt-4">
+                                    <div
+                                        class="label text-sm lg:text-base font-semibold leading-none mb-1.5 text-darkBlue">
+                                        Other details</div>
+                                    <div
+                                        class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                        <div class="font-medium">Primary</div>
+                                        <div>someorg.com</div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                        <div class="font-medium">Service State</div>
+                                        <div>Open</div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                        <div class="font-medium">Category</div>
+                                        <div>Vulnerable</div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                        <div class="font-medium">Hostnames</div>
+                                        <div>someorg.net</div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                        <div class="font-medium">Protocol</div>
+                                        <div>tcp</div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                        <div class="font-medium">Product</div>
+                                        <div>Apache httpd</div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                        <div class="font-medium">Version</div>
+                                        <div>2.4.29</div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                        <div class="font-medium">Organization</div>
+                                        <div>Some Org</div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between border-b border-b-[#CCE0FF] text-[13px] leading-tight py-2 text-darkBlue">
+                                        <div class="font-medium">Isp</div>
+                                        <div>Some ISP</div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between  text-[13px] leading-tight py-2 text-darkBlue">
+                                        <div class="font-medium">ASN</div>
+                                        <div>AS21928</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!--======== Dahsboard Area End =========-->
+
+        </div>
+
+    </main>
+    <!--======== Main Area End =========-->
+
+
+    <script src="assets/js/main.js"></script>
+
+
+
+</body>
+
+</html>
